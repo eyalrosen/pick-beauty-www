@@ -1,0 +1,22 @@
+<ion-view view-title="המדריך">
+    <ion-content id="companies">
+        <div id="search-box" class="bar bar-header item-input-inset">
+            <div class="item-input-wrapper">
+                <i class="icon ion-ios7-search placeholder-icon"></i>
+                <input type="search" placeholder="חיפוש חברה או מותג..." ng-model="searchText">
+                <i class="clear-search icon ion-ios7-close-empty" ng-click="searchText = ''"></i>
+            </div>
+        </div>
+        <ion-list>
+            <ion-item ng-repeat="company in filteredCompanies = (companies| filter:searchText)" class="item-icon-left"
+                    ui-sref="tab.company({ company: $index })">
+                <i class="icon" ng-class="company.experimented ? 'ion-sad-outline' : 'rabbit-icon rabbit-single-line'"></i>
+                <h2>{{ company.name }} - <span ng-show="company.experimented" class="experimented">מבצעת ניסויים</span><span ng-hide="company.experimented" class="not-experimented">לא מבצעת ניסויים</span></h2>
+            </ion-item>
+            <div id="no-data" ng-show="companies.length && searchText != null && !filteredCompanies.length">
+                <img /><br />
+                <b>אין לנו מידע על המותג</b><br />לך יש? ספרו לנו!<br /><a class="button" href="mailto:isav@isav.org.il">צרו קשר</a>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>

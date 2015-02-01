@@ -1,0 +1,25 @@
+<ion-view view-title="{{ company.name }}">
+    <ion-content id="company">
+        <div id="is-experimenting">
+            <div ng-show="company.experimented">
+                <img id="experimented-image" />
+                <h2>החברה מבצעת ניסויים</h2>
+            </div>
+            <div ng-hide="company.experimented">
+                <img id="not-experimented-image" />
+                <img id="official-rabbit" />
+                <h2>החברה אינה מבצעת ניסויים</h2>
+            </div>
+        </div>
+
+        <h5>מוצרי החברה:</h5>
+        <ion-list>
+            <ion-item ng-repeat="product in companyProducts">
+                {{ product.name_en }}<span ng-show="product.name_he && product.name_en"> - </span>{{ product.name_he }}
+            <span ng-show="product.vegan" style="color: green"> - טבעוני</span>
+            </ion-item>
+        </ion-list>
+
+        <div ng-include="'templates/part-contact.html'"></div>
+    </ion-content>
+</ion-view>

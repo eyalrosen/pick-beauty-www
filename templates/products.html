@@ -1,0 +1,12 @@
+<ion-view view-title="{{ categoryName }} שלא נוסו">
+    <ion-content id="products">
+        <ion-list>
+            <ion-item ng-repeat="product in products | filter:{type_he: categoryName, experimented: false}" class="item-icon-left">
+                <i class="icon rabbit-icon"></i>
+                <h2>{{ product.name_en }}<span ng-show="product.name_he && product.name_en"> - </span>{{ product.name_he }} <span ng-show="product.vegan" style="color: green"> - טבעוני</span></h2>
+                <h3>{{ product.company_en }}<span ng-show="product.company_he && product.company_en"> - </span>{{ product.company_he }}</h3>
+            </ion-item>
+        </ion-list>
+        <div ng-include="'templates/part-contact.html'"></div>
+    </ion-content>
+</ion-view>

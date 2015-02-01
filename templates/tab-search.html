@@ -1,0 +1,20 @@
+<ion-view view-title="חיפוש">
+  <ion-content>
+      <div id="search-box" class="bar bar-header item-input-inset">
+          <div class="item-input-wrapper">
+              <i class="icon ion-ios7-search placeholder-icon"></i>
+              <input type="search" placeholder="חפש מוצר, חברה או קטגוריה..." ng-model="search.query">
+              <i class="clear-search icon ion-ios7-close-empty" ng-click="search.query = ''"></i>
+          </div>
+      </div>
+    <ion-list>
+        <ion-item ng-repeat="item in searchResults" class="item-icon-left" ng-href="{{ item.link }}">
+            <i class="icon" ng-show="item.experimented != null" ng-class="item.experimented ? 'ion-sad-outline' : 'rabbit-icon'"></i>
+            <h2>{{ item.name }}</h2>
+            <p ng-show="item.experimented == true" class="experimented">מבצעת ניסויים</p>
+            <p ng-show="item.experimented == false" class="not-experimented">לא מבצעת ניסויים</p>
+
+        </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
